@@ -4,7 +4,9 @@
       <img src="https://img.icons8.com/nolan/64/coronavirus.png" class="p-2 mx-auto"/>
     </div>
     <Cards/>
-    <Chart></Chart>
+    <Chart/>
+
+    <router-view></router-view>
   </div>
 </template>
 
