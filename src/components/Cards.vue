@@ -41,7 +41,12 @@
           </div>
       </div>
        <!-- Number of Recovered -->
-    <div :class="theme" class="flex-1 text-text-greenNumbers font-bold font-sans text-5xl self-center items-center pl-16	">{{objDailySummary.discharged}}</div>
+      <number
+       :class="theme" class="flex-1 text-text-greenNumbers font-bold font-sans text-5xl self-center items-center pl-16"
+      :from="26000"
+      :to="objDailySummary.discharged"
+      :duration="5"
+      />
     </div>
 
     <!-- For Active -->
@@ -85,7 +90,12 @@
           </div>
       </div>
        <!-- Number of Active -->
-    <div :class="theme" class="flex-1 text-text-greenNumbers font-bold font-sans text-5xl self-center items-center pl-16	">{{getActive}}</div>
+       <number
+       :class="theme" class="flex-1 text-text-greenNumbers font-bold font-sans text-5xl self-center items-center pl-16"
+      :from="49000"
+      :to="getActive"
+      :duration="5"
+      />
     </div>
 
     <!-- For Deaths -->
@@ -128,8 +138,14 @@
           </div>
       </div>
        <!-- Number of Deaths -->
-    <div :class="theme" class="flex-1 text-text-greenNumbers font-bold font-sans text-5xl self-center items-center pl-16	">{{objDailySummary.deaths}}</div>
-    </div>
+    <number
+       :class="theme" class="flex-1 text-text-greenNumbers font-bold font-sans text-5xl self-center items-center pl-16"
+      :from="1900"
+      :to="objDailySummary.deaths"
+      :duration="5"
+      />
+
+</div>
     
   </div>
     
@@ -141,11 +157,10 @@ export default {
   props:['theme','objDailySummary'],
   computed:{
     getActive: function () {
-      // `this` points to the vm instance
        return this.objDailySummary.total - ( this.objDailySummary.discharged + this.objDailySummary.deaths )
-      
-      
-    }
+    },
+    
+    
   },
   
   
