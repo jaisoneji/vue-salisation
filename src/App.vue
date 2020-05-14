@@ -1,10 +1,10 @@
 <template >
-  <div id="app" class="bg-background-primary h-screen" :class="theme">
+  <div id="app" class="bg-background-primary h-full overflow-hidden" :class="theme">
     <div class="navbar bg-background-secondary" :class="theme">
       <img src="https://img.icons8.com/nolan/64/coronavirus.png" class="p-2 mx-auto"/>
     </div>
     <Cards :theme="theme" :objDailySummary="objDailySummary"></Cards>
-    <Chart/>
+    <Chart :theme="theme" class="border-solid border-4 m-auto"></Chart>
 
     <router-view></router-view>
   </div>

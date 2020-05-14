@@ -21,3 +21,12 @@ export const getLatestStats = async () => {
         console.error(error)
     }
 }
+
+export const getStateLatestStats = async () => {
+    try {
+        const {data} = await axios.get(`${baseURL}/${resource}/latest`)
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
