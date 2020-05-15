@@ -26,9 +26,14 @@ export default {
       this.statedata.push(obj)
       
     });
-    console.log(this.statedata)
+    
+    
    
     // data.data.re
+        for(let i=0;i<this.statedata.length;i++){
+          this.statedata[i].id=this.stateId[i]
+         }
+
 
     // Creation of Chart
     
@@ -41,17 +46,22 @@ export default {
 
         // Set projection
         chart.projection = new am4maps.projections.Miller();
+        chart.chartContainer.wheelable = false;
+
 
         // Create map polygon series
         var polygonSeries = chart.series.push(new am4maps.MapPolygonSeries());
 
         // Make map load polygon (like country names) data from GeoJSON
         polygonSeries.useGeodata = true;
-        polygonSeries.data=this.tempstatedata
+        polygonSeries.data=this.statedata
 
         // Configure series
         var polygonTemplate = polygonSeries.mapPolygons.template;
-        polygonTemplate.tooltipText = "{name}: {value}"
+        polygonTemplate.tooltipText = `[bold]{name} {totalConfirmed}[/]
+                                        ----
+                                        Deaths: {deaths}
+                                        Discharged: {discharged}`;
         if (this.theme === 'theme-dark') {
           polygonTemplate.fill = am4core.color('#102C44');
         } else {
@@ -72,9 +82,42 @@ export default {
     return{
       chart:'',
       statedata:[],
-      tempstatedata:[
-      
-    ]
+      stateId:["IN-AN", 
+              "IN-AP", 
+              "IN-AR", 
+              "IN-AS", 
+              "IN-BR", 
+              "IN-CH", 
+              "IN-CT",
+              "IN-DN",
+              "IN-DL", 
+              "IN-GA", 
+              "IN-GJ", 
+              "IN-HR", 
+              "IN-HP", 
+              "IN-JK", 
+              "IN-JH", 
+              "IN-KA", 
+              "IN-KL", 
+              "IN-LD", 
+              "IN-MP", 
+              "IN-MH", 
+              "IN-MN", 
+              "IN-ML", 
+              "IN-MZ", 
+              "IN-NL", 
+              "IN-OR", 
+              "IN-PY", 
+              "IN-PB", 
+              "IN-RJ", 
+              "IN-TN",
+              "IN-TG", 
+              "IN-TR", 
+              "IN-UT", 
+              "IN-UP", 
+              "IN-WB"
+              ]
+
     }
   }
 }

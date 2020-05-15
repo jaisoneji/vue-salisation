@@ -23,14 +23,16 @@ export default {
   name: 'App',
   async mounted(){
     const data = await getLatestStats();
-    const filteredData = (data.data.summary)
+    const filteredData = (data.data['unofficial-summary'])
+    // console.log(data.data['unofficial-summary'])
+    // console.log(filteredData[0].deaths)
     this.objDailySummary.lastRefreshed= data.data.lastRefreshed
-    this.objDailySummary.confirmedButLocationUnidentified= filteredData.confirmedButLocationUnidentified
-    this.objDailySummary.confirmedCasesForeign= filteredData.confirmedCasesForeign
-    this.objDailySummary.confirmedCasesIndian= filteredData.confirmedCasesIndian
-    this.objDailySummary.deaths= filteredData.deaths
-    this.objDailySummary.discharged= filteredData.discharged
-    this.objDailySummary.total= filteredData.total
+    // this.objDailySummary.confirmedButLocationUnidentified= filteredData.confirmedButLocationUnidentified
+    // this.objDailySummary.confirmedCasesForeign= filteredData[0].confirmedCasesForeign
+    this.objDailySummary.Active= filteredData[0].active
+    this.objDailySummary.deaths= filteredData[0].deaths
+    this.objDailySummary.discharged= filteredData[0].recovered
+    this.objDailySummary.total= filteredData[0].total
 
 
   },
@@ -48,7 +50,8 @@ export default {
         confirmedCasesIndian: '',
         deaths: '',
         discharged: '',
-        total: ''
+        total: '',
+        Active:''
       },
 
 

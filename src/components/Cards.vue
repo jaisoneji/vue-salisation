@@ -93,7 +93,7 @@
        <number
        :class="theme" class="flex-1 text-text-greenNumbers font-bold font-sans text-5xl self-center items-center pl-16"
       :from="49000"
-      :to="getActive"
+      :to="objDailySummary.Active"
       :duration="5"
       />
     </div>
@@ -156,9 +156,7 @@ export default {
   name: 'Cards',
   props:['theme','objDailySummary'],
   computed:{
-    getActive: function () {
-       return this.objDailySummary.total - ( this.objDailySummary.discharged + this.objDailySummary.deaths )
-    },
+    
     
     
   },
