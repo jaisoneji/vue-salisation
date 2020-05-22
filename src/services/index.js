@@ -8,7 +8,7 @@ const baseURL = `${baseDomain}`;
 export default axios.create({
   baseURL
 });
-const resource = "/stats";
+const resource = "stats/latest";
 
 
 
@@ -25,6 +25,16 @@ export const getLatestStats = async () => {
 export const getStateLatestStats = async () => {
     try {
         const {data} = await axios.get(`${baseURL}/${resource}/latest`)
+        return data
+    } catch (error) {
+        console.error(error)
+    }
+}
+
+// This is used for Graph Extraction
+export const getCountryHistory = async () => {
+    try {
+        const {data} = await axios.get('https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise/history')
         return data
     } catch (error) {
         console.error(error)

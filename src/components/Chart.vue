@@ -1,6 +1,6 @@
 <template>
-  <div class="w-full overflow-hidden md:w-1/2 mt-16">
-    <div ref="map" class="map md:w-11/12 h-screen overflow-hidden" :class="theme"></div>
+  <div class="w-full overflow-hidden mt-16">
+    <div ref="map" class="map md:w-1/2 h-screen overflow-hidden m-auto" :class="theme"></div>
   </div>
 </template>
 
@@ -20,8 +20,9 @@ export default {
   async mounted(){
       // Getting State Data
   
-    const data = await getStateLatestStats();
-    const filteredData = (data.data.regional)
+    const data1 = await getStateLatestStats();
+    // console.log(data1.data.statewise)
+    const filteredData = (data1.data.regional)
     filteredData.forEach(obj => {
       this.statedata.push(obj)
       
@@ -47,6 +48,8 @@ export default {
         // Set projection
         chart.projection = new am4maps.projections.Miller();
         chart.chartContainer.wheelable = false;
+        chart.seriesContainer.draggable = false;
+
 
 
         // Create map polygon series
@@ -105,7 +108,7 @@ export default {
               "IN-MN", 
               "IN-ML", 
               "IN-MZ", 
-              "IN-NL", 
+              // "IN-NL", 
               "IN-OR", 
               "IN-PY", 
               "IN-PB", 
