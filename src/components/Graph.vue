@@ -1,5 +1,5 @@
 <template>
-  <div id="chartdiv" :class="theme" class="w-11/12 h-80"></div>
+  <div id="chartdiv" :class="theme" class="w-11/12 h-80 m-auto"></div>
 </template>
 
 <script>
