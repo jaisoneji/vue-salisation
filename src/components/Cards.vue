@@ -3,7 +3,7 @@
   <div :class="theme" class="flex self-center	 flex-col md:flex-row mt-8 items-center w-screen justify-center">
     <!-- For Recovers -->
     <div :class="theme" class="flex flex-row mb-4 md:mr-4  w-11/12 max-w-sm rounded overflow-hidden shadow-lg bg-background-secondary">
-      <div class="flex flex-col flex-1">
+      <div class="flex flex-col ">
         <div :class="theme" class="px-6 py-4 font-bold text-xl mb-2 text-text-textColor font-mono  font-normal ">Recovered</div>
         <!-- SVG of Recovery -->
          <div class="mx-6 my-4">
@@ -42,7 +42,7 @@
       </div>
        <!-- Number of Recovered -->
       <number
-       :class="theme" class="flex-1 text-text-greenNumbers font-bold font-sans text-5xl self-center items-center pl-16"
+       :class="theme" class="flex-1 text-text-greenNumbers font-bold font-sans text-5xl self-center items-center border-black-100"
       :from="26000"
       :to="objDailySummary.discharged"
       :duration="5"
@@ -52,7 +52,7 @@
     <!-- For Active -->
 
     <div :class="theme" class="flex flex-row mb-4 md:mr-4  w-11/12 max-w-sm rounded overflow-hidden shadow-lg bg-background-secondary">
-      <div class="flex flex-col flex-1">
+      <div class="flex flex-col">
         <div :class="theme" class="px-6 py-4 font-bold text-xl mb-2 text-text-textColor font-mono  font-normal ">Active</div>
         <!-- SVG of Recovery -->
          <div class="mx-6 my-4">
@@ -91,7 +91,7 @@
       </div>
        <!-- Number of Active -->
        <number
-       :class="theme" class="flex-1 text-text-greenNumbers font-bold font-sans text-5xl self-center items-center pl-16"
+       :class="theme" class="flex-1 text-text-greenNumbers font-bold font-sans text-5xl self-center items-center"
       :from="49000"
       :to="objDailySummary.Active"
       :duration="5"
@@ -139,7 +139,7 @@
       </div>
        <!-- Number of Deaths -->
     <number
-       :class="theme" class="flex-1 text-text-greenNumbers font-bold font-sans text-5xl self-center items-center pl-16"
+       :class="theme" class="flex-1 text-text-greenNumbers font-bold font-sans text-5xl self-center items-center"
       :from="1900"
       :to="objDailySummary.deaths"
       :duration="5"
