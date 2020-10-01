@@ -1,1 +1,2 @@
 Jai Soneji
+Sonia Thakur
