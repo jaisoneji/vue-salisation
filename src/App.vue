@@ -53,40 +53,41 @@ export default {
   name: 'App',
   async mounted(){
     const data = await getLatestStats();
-    const filteredData = (data.data['unofficial-summary'])
-    // console.log(data.data['unofficial-summary'])
+    const filteredData = (data.data['summary'])
+    console.log(filteredData)
     // console.log(filteredData[0].deaths)
     this.objDailySummary.lastRefreshed= data.data.lastRefreshed
     // this.objDailySummary.confirmedButLocationUnidentified= filteredData.confirmedButLocationUnidentified
     // this.objDailySummary.confirmedCasesForeign= filteredData[0].confirmedCasesForeign
-    this.objDailySummary.Active= filteredData[0].active
-    this.objDailySummary.deaths= filteredData[0].deaths
-    this.objDailySummary.discharged= filteredData[0].recovered
-    this.objDailySummary.total= filteredData[0].total
+    this.objDailySummary.Active= filteredData.total - (filteredData.deaths + filteredData.discharged)
+    this.objDailySummary.deaths= filteredData.deaths
+    this.objDailySummary.discharged= filteredData.discharged
+    this.objDailySummary.total= filteredData.total
 
 
 
     // For Graphs
     const data1=await getCountryHistory()
-    data1.data.history.forEach((obj)=>{
+    console.log(data1)
+    data1.data.forEach((obj)=>{
       this.deathSeries.push({
         "day":obj.day,
-        "deaths":obj.total.deaths
+        "deaths":obj.summary.deaths
       })
 
       this.confirmedSeries.push({
         "day":obj.day,
-        "confirmed":obj.total.confirmed
+        "confirmed":obj.summary.total
       })
 
       this.activeSeries.push({
         "day":obj.day,
-        "active":obj.total.active
+        "active":obj.summary.total - (obj.summary.discharged + obj.summary.deaths)
       })
 
       this.recoveredSeries.push({
         "day":obj.day,
-        "recovered":obj.total.recovered
+        "recovered":obj.summary.discharged
       })
     })
     

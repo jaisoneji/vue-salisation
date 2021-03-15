@@ -24,7 +24,7 @@ export const getLatestStats = async () => {
 
 export const getStateLatestStats = async () => {
     try {
-        const {data} = await axios.get(`${baseURL}/${resource}/latest`)
+        const {data} = await axios.get("https://api.rootnet.in/covid19-in/stats/history")
         return data
     } catch (error) {
         console.error(error)
@@ -34,7 +34,7 @@ export const getStateLatestStats = async () => {
 // This is used for Graph Extraction
 export const getCountryHistory = async () => {
     try {
-        const {data} = await axios.get('https://api.rootnet.in/covid19-in/unofficial/covid19india.org/statewise/history')
+        const {data} = await axios.get('https://api.rootnet.in/covid19-in/stats/history')
         return data
     } catch (error) {
         console.error(error)

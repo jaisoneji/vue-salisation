@@ -21,21 +21,21 @@ export default {
       // Getting State Data
   
     const data1 = await getStateLatestStats();
-    // console.log(data1.data.statewise)
-    const filteredData = (data1.data.regional)
-    filteredData.forEach(obj => {
-      this.statedata.push(obj)
+    // console.log(data1.data)
+    const filteredData = data1.data[data1.data.length - 1]
+    // console.log("filteredData"+ JSON.stringify(filteredData))
+    this.statedata.push(filteredData.regional)
+    
+    console.log("statedata:")
+    console.log(this.statedata[0])
+    this.statedata[0].forEach((obj,index) => {
+      obj.id = this.stateId[index]
       
     });
-    
-    
-   
     // data.data.re
-        for(let i=0;i<this.statedata.length;i++){
-          this.statedata[i].id=this.stateId[i]
-         }
+        
 
-
+    // console.log("Update:"+JSON.stringify(this.statedata))
     // Creation of Chart
     
         let chart = am4core.create("map", am4maps.MapChart);
@@ -57,7 +57,7 @@ export default {
 
         // Make map load polygon (like country names) data from GeoJSON
         polygonSeries.useGeodata = true;
-        polygonSeries.data=this.statedata
+        polygonSeries.data=this.statedata[0]
 
         // Configure series
         var polygonTemplate = polygonSeries.mapPolygons.template;
@@ -102,17 +102,19 @@ export default {
               "IN-JH", 
               "IN-KA", 
               "IN-KL", 
+              "IN-LA",
               "IN-LD", 
               "IN-MP", 
               "IN-MH", 
               "IN-MN", 
               "IN-ML", 
               "IN-MZ", 
-              // "IN-NL", 
+              "IN-NL", 
               "IN-OR", 
               "IN-PY", 
               "IN-PB", 
               "IN-RJ", 
+              "IN-SK",
               "IN-TN",
               "IN-TG", 
               "IN-TR", 
