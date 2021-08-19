@@ -9,7 +9,7 @@
 
   <p align="center">
     description 
-    <a href="covid19.jaisoneji.me"> View Demo </a>
+    <a href="https://vue-salisation.netlify.app/"> View Demo </a>
      <br />
     <br />
     <a href="#"><strong>Explore the docs »</strong></a>
